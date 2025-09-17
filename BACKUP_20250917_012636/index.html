@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entropia - Viradões 2025</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animação de Abertura -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="logo-container">
+            <h1 class="logo-text">ENTROPIA</h1>
+        </div>
+    </div>
+
+    <!-- Container Principal -->
+    <div id="main-container" class="main-container hidden">
+
+        <!-- Etapa 1: Entrada CPF -->
+        <section id="step-1" class="step active">
+            <div class="cpf-section">
+                <div class="cpf-content">
+                    <div class="cpf-form">
+                        <h2 class="cpf-title">ENTROPIA</h2>
+                        <p class="cpf-subtitle">Viradões 2025</p>
+                        <label for="cpf-input" class="form-label">Digite o CPF do aluno para começar</label>
+                        <input
+                            type="tel"
+                            inputmode="numeric"
+                            id="cpf-input"
+                            class="cpf-input"
+                            placeholder="000.000.000-00"
+                            maxlength="14"
+                        >
+                        <button id="cpf-submit" class="btn-primary">Continuar</button>
+                        <span id="cpf-error" class="error-message"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Etapa 2: Página de Saudação -->
+        <section id="step-2" class="step hidden">
+            <div class="greeting-screen">
+                <div class="greeting-container">
+                    <h1 id="greeting-text" class="greeting-logo-text"></h1>
+                </div>
+            </div>
+        </section>
+
+        <!-- Etapa 3: Seleção de Viradões -->
+        <section id="step-3" class="step hidden">
+            <div class="courses-section">
+                <h2 class="section-title">Escolha seus <span class="highlight">VIRADÕES</span></h2>
+                <p class="section-subtitle">Selecione os cursos que você deseja participar</p>
+
+                <div class="courses-grid">
+                    <!-- Viradão PSI -->
+                    <div class="course-card" data-course="psi" data-price="150">
+                        <div class="course-badge">INTENSIVO</div>
+                        <div class="course-info">
+                            <h3 class="course-title">VIRADÃO PSI</h3>
+                            <div class="course-subtitle">9 e 10 de Outubro • Prova: 12/OUT</div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-label">Investimento</span>
+                            <span class="price-value">R$ 150,00</span>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="check-psi" class="course-checkbox">
+                        </div>
+                    </div>
+
+                    <!-- Viradão SIS -->
+                    <div class="course-card" data-course="sis" data-price="200">
+                        <div class="course-badge badge-week">1 SEMANA</div>
+                        <div class="course-info">
+                            <h3 class="course-title">VIRADÃO SIS</h3>
+                            <div class="course-subtitle">20 a 24 de Outubro • Prova: 26/OUT</div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-label">Investimento</span>
+                            <span class="price-value">R$ 200,00</span>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="check-sis" class="course-checkbox">
+                        </div>
+                    </div>
+
+                    <!-- Viradão MACRO -->
+                    <div class="course-card" data-course="macro" data-price="200">
+                        <div class="course-badge badge-week">1 SEMANA</div>
+                        <div class="course-info">
+                            <h3 class="course-title">VIRADÃO MACRO</h3>
+                            <div class="course-subtitle">20 a 24 de Outubro • Provas: 27 e 28/OUT</div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-label">Investimento</span>
+                            <span class="price-value">R$ 200,00</span>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="check-macro" class="course-checkbox">
+                        </div>
+                    </div>
+
+                    <!-- Viradão ENEM -->
+                    <div class="course-card premium" data-course="enem" data-price="350">
+                        <div class="course-badge badge-premium">2 SEMANAS</div>
+                        <div class="course-info">
+                            <h3 class="course-title">VIRADÃO ENEM</h3>
+                            <div class="course-subtitle">3 a 14 de Novembro • Provas: 9 e 16/NOV</div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-label">Investimento</span>
+                            <span class="price-value">R$ 350,00</span>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="check-enem" class="course-checkbox">
+                        </div>
+                    </div>
+
+                    <!-- Viradão PSC 3 -->
+                    <div class="course-card premium" data-course="psc3" data-price="350">
+                        <div class="course-badge badge-premium">2 SEMANAS</div>
+                        <div class="course-info">
+                            <h3 class="course-title">VIRADÃO PSC 3</h3>
+                            <div class="course-subtitle">17 a 28 de Novembro • Prova: 30/NOV</div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-label">Investimento</span>
+                            <span class="price-value">R$ 350,00</span>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="check-psc3" class="course-checkbox">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total e Próximo Passo -->
+                <div class="cart-summary">
+                    <div class="total-container">
+                        <span class="total-label">Total:</span>
+                        <span id="total-price" class="total-value">R$ 0,00</span>
+                    </div>
+                    <button id="continue-to-whatsapp" class="btn-primary" disabled>
+                        Continuar para Finalizar
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Etapa 4: WhatsApp e Finalização -->
+        <section id="step-4" class="step hidden">
+            <div class="checkout-section">
+                <h2 class="section-title">Quase lá!</h2>
+                <p class="section-subtitle">Precisamos do seu WhatsApp para finalizar</p>
+
+                <div class="checkout-summary">
+                    <h3>Resumo do Pedido</h3>
+                    <div id="order-summary" class="order-items"></div>
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <span id="final-total">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <div class="whatsapp-form">
+                    <label for="whatsapp-input" class="form-label">WhatsApp para contato</label>
+                    <input
+                        type="text"
+                        id="whatsapp-input"
+                        class="whatsapp-input"
+                        placeholder="(92) 99999-9999"
+                        maxlength="15"
+                    >
+                    <span id="whatsapp-error" class="error-message"></span>
+                    <button id="submit-order" class="btn-success">
+                        Finalizar Inscrição
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Etapa 5: Confirmação -->
+        <section id="step-5" class="step hidden">
+            <div class="success-section">
+                <div class="success-icon">✅</div>
+                <h2 class="success-title">Inscrição Realizada!</h2>
+                <p class="success-message">
+                    Sua inscrição foi enviada com sucesso! Em breve entraremos em contato pelo WhatsApp informado.
+                </p>
+                <p class="success-subtitle">
+                    Prepare-se para dar o próximo passo rumo à sua aprovação!
+                </p>
+                <div class="success-footer">
+                    <p class="brand-message">Nós somos a <strong>ENTROPIA</strong></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
