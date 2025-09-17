@@ -1,7 +1,5 @@
 // Configurações
-const API_URL = 'https://gateway.apibrasil.io/api/v2/dados/cpf/credits';
-// Token da API Brasil - Em produção ideal seria usar proxy backend
-const API_TOKEN = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXRhZm9ybWEuYXBpYnJhc2lsLmNvbS5ici9zb2NpYWwvZ29vZ2xlL2NhbGxiYWNrIiwiaWF0IjoxNzM5MTQ5MzY0LCJleHAiOjE3NzA2ODUzNjQsIm5iZiI6MTczOTE0OTM2NCwianRpIjoiVWdMTldYMXhlakxkNFZFRiIsInN1YiI6IjEzNjYzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.FK6sTTlRelxs_OzIwFbefSPQpveovwJmLVAapGB9sZU';
+// Token agora é protegido via função serverless - não exposto no frontend
 const WEBHOOK_URL = 'https://webhook.cursoentropia.com/webhook/REGISTRODOPEDIDOVIR2025';
 
 // Variáveis globais
@@ -163,17 +161,14 @@ async function handleCPFSubmit() {
     try {
         console.log('Fazendo chamada para API com CPF:', cpf);
 
-        // Fazer chamada à API
-        const response = await fetch(API_URL, {
+        // Fazer chamada à API via função serverless para proteger o token
+        const response = await fetch('/api/consulta-cpf', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': API_TOKEN
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                cpf: cpf,
-                tipo: 'dados-cadastrais',
-                homolog: false
+                cpf: cpf
             })
         });
 

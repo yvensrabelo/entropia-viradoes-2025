@@ -1,0 +1,15 @@
+{
+  "functions": {
+    "api/*.js": {
+      "runtime": "vercel@latest"
+    }
+  },
+  "env": {
+    "API_BRASIL_TOKEN": "@api_brasil_token"
+  },
+  "build": {
+    "env": {
+      "API_BRASIL_TOKEN": "@api_brasil_token"
+    }
+  }
+}
