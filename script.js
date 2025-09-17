@@ -1,7 +1,7 @@
 // Configurações
 const API_URL = 'https://gateway.apibrasil.io/api/v2/dados/cpf/credits';
-// IMPORTANTE: Token deve ser configurado no servidor/backend - NÃO expor em produção
-const API_TOKEN = 'Bearer SEU_TOKEN_AQUI'; // Substituir por variável de ambiente ou proxy backend
+// Token da API Brasil - Em produção ideal seria usar proxy backend
+const API_TOKEN = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3BsYXRhZm9ybWEuYXBpYnJhc2lsLmNvbS5ici9zb2NpYWwvZ29vZ2xlL2NhbGxiYWNrIiwiaWF0IjoxNzM5MTQ5MzY0LCJleHAiOjE3NzA2ODUzNjQsIm5iZiI6MTczOTE0OTM2NCwianRpIjoiVWdMTldYMXhlakxkNFZFRiIsInN1YiI6IjEzNjYzIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.FK6sTTlRelxs_OzIwFbefSPQpveovwJmLVAapGB9sZU';
 const WEBHOOK_URL = 'https://webhook.cursoentropia.com/webhook/REGISTRODOPEDIDOVIR2025';
 
 // Variáveis globais
