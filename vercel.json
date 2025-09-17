@@ -5,11 +5,11 @@
     }
   },
   "env": {
-    "API_BRASIL_TOKEN": "@api_brasil_token"
+    "API_BRASIL_TOKEN": "@API_BRASIL_TOKEN"
   },
   "build": {
     "env": {
-      "API_BRASIL_TOKEN": "@api_brasil_token"
+      "API_BRASIL_TOKEN": "@API_BRASIL_TOKEN"
     }
   }
 }
