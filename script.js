@@ -555,14 +555,73 @@ async function handleFinalSubmit() {
     studentNameInput.classList.remove('error');
     whatsappInput.classList.remove('error');
 
-    // Preparar dados para envio
+    // Obter IP do usuário (se disponível)
+    let userIP = 'N/A';
+    try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        userIP = ipData.ip;
+    } catch (error) {
+        console.log('Não foi possível obter o IP:', error);
+    }
+
+    // Preparar mapeamento de viradões com V/F
+    const viradaoMapping = {
+        'psi': 'F',
+        'sis1': 'F',
+        'sis2': 'F',
+        'macro': 'F',
+        'enem': 'F',
+        'psc3': 'F'
+    };
+
+    // Marcar viradões selecionados como V
+    selectedCourses.forEach(course => {
+        // Mapear nomes dos cursos para as chaves corretas
+        const courseName = course.name.toUpperCase();
+        if (courseName.includes('PSI')) {
+            viradaoMapping.psi = 'V';
+        } else if (courseName.includes('SIS 1')) {
+            viradaoMapping.sis1 = 'V';
+        } else if (courseName.includes('SIS 2')) {
+            viradaoMapping.sis2 = 'V';
+        } else if (courseName.includes('MACRO')) {
+            viradaoMapping.macro = 'V';
+        } else if (courseName.includes('ENEM')) {
+            viradaoMapping.enem = 'V';
+        } else if (courseName.includes('PSC 3')) {
+            viradaoMapping.psc3 = 'V';
+        }
+    });
+
+    // Formatar data e hora para horário de Manaus (UTC-4)
+    const now = new Date();
+    const manausDate = new Date(now.getTime() - (4 * 60 * 60 * 1000)); // UTC-4
+    const dataFormatada = manausDate.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+    const horaFormatada = manausDate.toLocaleTimeString('pt-BR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    }).replace(':', 'h');
+
+    // Preparar dados para envio no formato solicitado
     const orderData = {
-        cpf: userData.cpf,
-        nome: studentName, // Usar o nome do campo (pode ser da API ou digitado pelo usuário)
-        whatsapp: whatsapp.replace(/\D/g, ''),
-        cursos: selectedCourses.map(c => c.name),
-        total: totalPrice,
-        dataInscricao: new Date().toISOString()
+        "NOME": studentName.toUpperCase(),
+        "DATA E HORA": `${dataFormatada} ${horaFormatada}`,
+        "CPF": userData.cpf.replace(/\D/g, ''),
+        "WhatsApp": `55${whatsapp.replace(/\D/g, '')}`,
+        "VIRADÃO PSI": viradaoMapping.psi,
+        "VIRADÃO SIS 1": viradaoMapping.sis1,
+        "VIRADÃO SIS 2": viradaoMapping.sis2,
+        "VIRADÃO MACRO": viradaoMapping.macro,
+        "VIRADÃO ENEM": viradaoMapping.enem,
+        "VIRADÃO PSC 3": viradaoMapping.psc3,
+        "VALOR TOTAL": `R$ ${totalPrice.toFixed(2).replace('.', ',')}`,
+        "IP": userIP
     };
 
     try {
