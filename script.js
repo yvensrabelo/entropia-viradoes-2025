@@ -615,7 +615,7 @@ async function handleFinalSubmit() {
         "VIRADÃO MACRO": viradaoMapping.macro,
         "VIRADÃO ENEM": viradaoMapping.enem,
         "VIRADÃO PSC 3": viradaoMapping.psc3,
-        "VALOR TOTAL": `R$ ${totalPrice.toFixed(2).replace('.', ',')}`,
+        "VALOR TOTAL": totalPrice.toFixed(2),
         "IP": userIP
     };
 
