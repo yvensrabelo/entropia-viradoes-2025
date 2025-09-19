@@ -591,13 +591,16 @@ async function handleFinalSubmit() {
 
     // Formatar data e hora para horário de Manaus (UTC-4)
     const now = new Date();
-    const manausDate = new Date(now.getTime() - (4 * 60 * 60 * 1000)); // UTC-4
-    const dataFormatada = manausDate.toLocaleDateString('pt-BR', {
+    // Manaus é UTC-4, então quando é meio-dia UTC, em Manaus são 8h da manhã
+    // Mas o navegador já ajusta para o fuso local, então usamos toLocaleString diretamente
+    const dataFormatada = now.toLocaleDateString('pt-BR', {
+        timeZone: 'America/Manaus',
         day: '2-digit',
         month: '2-digit',
         year: 'numeric'
     });
-    const horaFormatada = manausDate.toLocaleTimeString('pt-BR', {
+    const horaFormatada = now.toLocaleTimeString('pt-BR', {
+        timeZone: 'America/Manaus',
         hour: '2-digit',
         minute: '2-digit',
         hour12: false
