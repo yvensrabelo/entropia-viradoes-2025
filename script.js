@@ -562,7 +562,6 @@ async function handleFinalSubmit() {
 
     // Preparar mapeamento de viradões com V/F
     const viradaoMapping = {
-        'psi': 'F',
         'sis1': 'F',
         'sis2': 'F',
         'macro': 'F',
@@ -574,9 +573,7 @@ async function handleFinalSubmit() {
     selectedCourses.forEach(course => {
         // Mapear nomes dos cursos para as chaves corretas
         const courseName = course.name.toUpperCase();
-        if (courseName.includes('PSI')) {
-            viradaoMapping.psi = 'V';
-        } else if (courseName.includes('SIS 1')) {
+        if (courseName.includes('SIS 1')) {
             viradaoMapping.sis1 = 'V';
         } else if (courseName.includes('SIS 2')) {
             viradaoMapping.sis2 = 'V';
@@ -612,7 +609,6 @@ async function handleFinalSubmit() {
         "DATA E HORA": `${dataFormatada} ${horaFormatada}`,
         "CPF": userData.cpf.replace(/\D/g, ''),
         "WhatsApp": `55${whatsapp.replace(/\D/g, '')}`,
-        "VIRADÃO PSI": viradaoMapping.psi,
         "VIRADÃO SIS 1": viradaoMapping.sis1,
         "VIRADÃO SIS 2": viradaoMapping.sis2,
         "VIRADÃO MACRO": viradaoMapping.macro,

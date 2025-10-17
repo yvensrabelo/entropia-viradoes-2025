@@ -622,6 +622,10 @@ body {
     background: #f59e0b;
 }
 
+.badge-online {
+    background: #3b82f6;
+}
+
 .course-title {
     font-size: 1.25rem;
     font-weight: 700;
