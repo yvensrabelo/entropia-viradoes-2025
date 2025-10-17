@@ -565,6 +565,7 @@ async function handleFinalSubmit() {
         'sis1': 'F',
         'sis2': 'F',
         'macro': 'F',
+        'macro-online': 'F',
         'enem': 'F',
         'psc3': 'F'
     };
@@ -577,6 +578,8 @@ async function handleFinalSubmit() {
             viradaoMapping.sis1 = 'V';
         } else if (courseName.includes('SIS 2')) {
             viradaoMapping.sis2 = 'V';
+        } else if (courseName.includes('MACRO ONLINE')) {
+            viradaoMapping['macro-online'] = 'V';
         } else if (courseName.includes('MACRO')) {
             viradaoMapping.macro = 'V';
         } else if (courseName.includes('ENEM')) {
@@ -612,6 +615,7 @@ async function handleFinalSubmit() {
         "VIRADÃO SIS 1": viradaoMapping.sis1,
         "VIRADÃO SIS 2": viradaoMapping.sis2,
         "VIRADÃO MACRO": viradaoMapping.macro,
+        "VIRADÃO MACRO ONLINE": viradaoMapping['macro-online'],
         "VIRADÃO ENEM": viradaoMapping.enem,
         "VIRADÃO PSC 3": viradaoMapping.psc3,
         "VALOR TOTAL": totalPrice.toFixed(2),
