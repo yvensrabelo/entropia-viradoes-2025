@@ -71,6 +71,14 @@ function initializeEventListeners() {
 // Inicializar checkboxes dos cursos (chamado quando a tela de viradões é mostrada)
 function initializeCourseCheckboxes() {
     document.querySelectorAll('.course-checkbox').forEach(checkbox => {
+        const card = checkbox.closest('.course-card');
+
+        // Verificar se o curso está esgotado
+        if (card.dataset.soldOut === 'true') {
+            checkbox.disabled = true;
+            checkbox.checked = false;
+        }
+
         checkbox.addEventListener('change', updateCartTotal);
     });
 }

@@ -600,6 +600,31 @@ body {
     box-shadow: 0 15px 40px rgba(245, 158, 11, 0.2);
 }
 
+.course-card.sold-out {
+    opacity: 0.5;
+    background: rgba(220, 38, 38, 0.02);
+    border-color: rgba(220, 38, 38, 0.15);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.course-card.sold-out:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.course-card.sold-out .course-checkbox {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.course-card.sold-out .course-title,
+.course-card.sold-out .course-lessons,
+.course-card.sold-out .course-subtitle,
+.course-card.sold-out .price-value {
+    color: #9ca3af;
+}
+
 .course-badge {
     position: absolute;
     top: -8px;
@@ -624,6 +649,10 @@ body {
 
 .badge-online {
     background: #3b82f6;
+}
+
+.badge-sold-out {
+    background: #dc2626;
 }
 
 .course-title {
