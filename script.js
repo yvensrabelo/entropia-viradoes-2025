@@ -570,10 +570,6 @@ async function handleFinalSubmit() {
 
     // Preparar mapeamento de viradões com V/F
     const viradaoMapping = {
-        'sis1': 'F',
-        'sis2': 'F',
-        'macro': 'F',
-        'macro-online': 'F',
         'enem': 'F',
         'psc3': 'F'
     };
@@ -582,15 +578,7 @@ async function handleFinalSubmit() {
     selectedCourses.forEach(course => {
         // Mapear nomes dos cursos para as chaves corretas
         const courseName = course.name.toUpperCase();
-        if (courseName.includes('SIS 1')) {
-            viradaoMapping.sis1 = 'V';
-        } else if (courseName.includes('SIS 2')) {
-            viradaoMapping.sis2 = 'V';
-        } else if (courseName.includes('MACRO ONLINE')) {
-            viradaoMapping['macro-online'] = 'V';
-        } else if (courseName.includes('MACRO')) {
-            viradaoMapping.macro = 'V';
-        } else if (courseName.includes('ENEM')) {
+        if (courseName.includes('ENEM')) {
             viradaoMapping.enem = 'V';
         } else if (courseName.includes('PSC 3')) {
             viradaoMapping.psc3 = 'V';
@@ -620,10 +608,6 @@ async function handleFinalSubmit() {
         "DATA E HORA": `${dataFormatada} ${horaFormatada}`,
         "CPF": userData.cpf.replace(/\D/g, ''),
         "WhatsApp": `55${whatsapp.replace(/\D/g, '')}`,
-        "VIRADÃO SIS 1": viradaoMapping.sis1,
-        "VIRADÃO SIS 2": viradaoMapping.sis2,
-        "VIRADÃO MACRO": viradaoMapping.macro,
-        "VIRADÃO MACRO ONLINE": viradaoMapping['macro-online'],
         "VIRADÃO ENEM": viradaoMapping.enem,
         "VIRADÃO PSC 3": viradaoMapping.psc3,
         "VALOR TOTAL": totalPrice.toFixed(2),
