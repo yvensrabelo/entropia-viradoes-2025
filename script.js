@@ -570,6 +570,7 @@ async function handleFinalSubmit() {
 
     // Preparar mapeamento de viradões com V/F
     const viradaoMapping = {
+        'enem-online': 'F',
         'enem': 'F',
         'psc3': 'F'
     };
@@ -578,7 +579,9 @@ async function handleFinalSubmit() {
     selectedCourses.forEach(course => {
         // Mapear nomes dos cursos para as chaves corretas
         const courseName = course.name.toUpperCase();
-        if (courseName.includes('ENEM')) {
+        if (courseName.includes('ENEM ONLINE')) {
+            viradaoMapping['enem-online'] = 'V';
+        } else if (courseName.includes('ENEM')) {
             viradaoMapping.enem = 'V';
         } else if (courseName.includes('PSC 3')) {
             viradaoMapping.psc3 = 'V';
@@ -608,6 +611,7 @@ async function handleFinalSubmit() {
         "DATA E HORA": `${dataFormatada} ${horaFormatada}`,
         "CPF": userData.cpf.replace(/\D/g, ''),
         "WhatsApp": `55${whatsapp.replace(/\D/g, '')}`,
+        "VIRADÃO ENEM ONLINE": viradaoMapping['enem-online'],
         "VIRADÃO ENEM": viradaoMapping.enem,
         "VIRADÃO PSC 3": viradaoMapping.psc3,
         "VALOR TOTAL": totalPrice.toFixed(2),
